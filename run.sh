@@ -43,7 +43,7 @@ fi
 
 EXEC_SHELL_NAME=$1
 EXEC_SHELL_WITH_ARGS=$*
-LOG_NAME=${SCRIPT_LOG_DIR}/${EXEC_SHELL_NAME}.${DATETIME}.log
+LOG_NAME=${SCRIPT_LOG_DIR}/${EXEC_SHELL_NAME}.${LOG_TIME}.log   # LOG_TIME in custom.env
 
 # ------------------------------------------
 # Main Process
