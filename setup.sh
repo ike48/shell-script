@@ -2,12 +2,12 @@
 #//////////////////////////////////////////////////////////////////////
 #/
 #/ Script Name : setup.sh
-#/ 
+#/
 #/ Desctiption :
 #/     1. Create required directories.
 #/     2. Setting permissions.
 #/     3. Setting owner and group.
-#/ 
+#/
 #/ Usage :
 #/     setup.sh param1 [param2]
 #/	param 1 - owner name for tools
@@ -31,6 +31,10 @@ fi
 
 if [ -r ${CUSTOM_ENV} ];then
     . ${CUSTOM_ENV}
+fi
+
+if [ ${DEBUG} -eq 1 ];then
+  set -x
 fi
 
 _Message -i "===== [${SCRIPT_NAME} ${SCRIPT_ARGS}] started. ====="

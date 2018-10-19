@@ -30,6 +30,10 @@ if [ -r ${CUSTOM_ENV} ];then
     . ${CUSTOM_ENV}
 fi
 
+if [ ${DEBUG} -eq 1 ];then
+  set -x
+fi
+
 _Message -i "===== [${SCRIPT_NAME} ${SCRIPT_ARGS}] started. ====="
 
 # ------------------------------------------

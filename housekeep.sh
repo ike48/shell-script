@@ -2,12 +2,12 @@
 #/////////////////////////////////////////////////////////////////////
 #/
 #/ Script Name : housekeep.sh
-#/ 
+#/
 #/ Desctiption :
 #/     1.   create config for myself.
 #/     2-1. check config setting (for each iterations).
 #/     2-2. delete old files  (for each iterations).
-#/ 
+#/
 #/ Usage :
 #/     housekeep.sh param1
 #/         param 1 - list of housekeep target
@@ -29,6 +29,10 @@ fi
 
 if [ -r ${CUSTOM_ENV} ];then
     . ${CUSTOM_ENV}
+fi
+
+if [ ${DEBUG} -eq 1 ];then
+  set -x
 fi
 
 _Message -i "===== [${SCRIPT_NAME} ${SCRIPT_ARGS}] started. ====="
@@ -89,7 +93,7 @@ _Message -i "START:Housekeeping."
 while read _HOST _TYPE _OWNER _TARGET_DIR _FILE_PATTN _RETNTION_DAYS _ACTION
 do
     ENTRY_NO=$(( ENTRY_NO + 1 ))
-    
+
     _Message -l
     _Message -i "***** Entry No.${ENTRY_NO} *****"
     _Message -i "TYPE          : ${_TYPE}"
@@ -98,7 +102,7 @@ do
     _Message -i "FILE_PATTN    : ${_FILE_PATTN}"
     _Message -i "RETENTION_DAYS: ${_RETNTION_DAYS}"
     _Message -i "ACTION        : ${_ACTION}"
-    
+
     ### check _TYPE
     case "${_TYPE}" in
     "f" )
@@ -122,16 +126,16 @@ do
         continue
         ;;
     esac
-    
+
     ### check _OWNER
     sudo -u ${_OWNER} id > /dev/null
     if [ $? -ne 0 ];then
-        _Message -e "OWNER:${_OWNER} is not available on this host." 
+        _Message -e "OWNER:${_OWNER} is not available on this host."
         _Message -w "Continue to the next entry."
         ERR_COUNT=$(( ERR_COUNT + 1 ))
         continue
     fi
-    
+
     ### check _TARGET_DIR is allowed.
     for ALLOW_DIR in $(echo ${ALLOW_DIRS[@]})
     do
@@ -144,14 +148,14 @@ do
             break
         fi
     done
-    
+
     if [ "${IS_ALLOWED}" = "false" ];then
         _Message -e "TARGET_DIR:${_TARGET_DIR} is not allowed for housekeeping. Please add entry to ${SCRIPT_CONF_FILE}."
         _Message -w "Continue to the next entry."
         ERR_COUNT=$(( ERR_COUNT + 1 ))
         continue
     fi
-    
+
     ### check _TARGET_DIR
     if [ ! -d "${_TARGET_DIR}" ];then
         _Message -e "TARGET_DIR:${_TARGET_DIR} is not found."
@@ -159,7 +163,7 @@ do
         ERR_COUNT=$(( ERR_COUNT + 1 ))
         continue
     fi
-    
+
     ### check _RETNTION_DAYS
     echo "${_RETNTION_DAYS}" | egrep -q "^[0-9][0-9]*$"
     if [ $? -ne 0 ];then
@@ -168,7 +172,7 @@ do
         ERR_COUNT=$(( ERR_COUNT + 1 ))
         continue
     fi
-    
+
     ### check ACTION
     _ACTION=$(echo ${_ACTION} | tr [:upper:] [:lower:])
     case ${_ACTION} in
@@ -177,7 +181,7 @@ do
         ;;
     compress )
         ACTION_CMD="gzip"
-        
+
         case ${_TYPE} in
         "d" )
             _Message -e "ACTION:${_ACTION} is not supported for directory."
@@ -199,7 +203,7 @@ do
         continue
         ;;
     esac
-    
+
     _Message -i "All setting are valid."
     for TARGET_FILE in $(find ${_TARGET_DIR} ${FIND_OPT} -type ${_TYPE} -name "${_FILE_PATTN}" -mtime +"${_RETNTION_DAYS}" | grep -v "\/\.")
     do
