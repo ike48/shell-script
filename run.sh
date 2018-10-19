@@ -2,11 +2,11 @@
 #//////////////////////////////////////////////////////////////////////
 #/
 #/ Script Name : run.sh
-#/ 
+#/
 #/ Desctiption :
 #/     1. Execute the shell specified by the argument.
 #/     2. Output shell's standard output and standard error output to the log.
-#/ 
+#/
 #/ Usage :
 #/     run.sh shell [params]
 #/     e.g.) run.sh foo.sh
@@ -43,7 +43,7 @@ fi
 
 EXEC_SHELL_NAME=$1
 EXEC_SHELL_WITH_ARGS=$*
-LOG_NAME=${SCRIPT_LOG_DIR}/${EXEC_SHELL_NAME}.${LOG_TIME}.log   # LOG_TIME in custom.env
+LOG_NAME=${SCRIPT_LOG_DIR}/${EXEC_SHELL_NAME}.log.${LOG_SUFFIX}   # LOG_SUFFIX in custom.env
 
 # ------------------------------------------
 # Main Process

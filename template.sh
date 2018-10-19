@@ -2,12 +2,12 @@
 #//////////////////////////////////////////////////////////////////////
 #/
 #/ Script Name : template.sh
-#/ 
+#/
 #/ Desctiption :
 #/     1. hoge
 #/     2. fuga
 #/     3. piyo
-#/ 
+#/
 #/ Usage :
 #/     template.sh param1 param2 [param3]
 #/         param 1 - foo
@@ -32,6 +32,10 @@ fi
 
 if [ -r ${CUSTOM_ENV} ];then
     . ${CUSTOM_ENV}
+fi
+
+if [ ${DEBUG} -eq 1 ];then
+  set -x
 fi
 
 _Message -i "===== [${SCRIPT_NAME} ${SCRIPT_ARGS}] started. ====="
