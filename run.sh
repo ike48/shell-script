@@ -1,18 +1,19 @@
 #!/bin/bash
 #//////////////////////////////////////////////////////////////////////
-#/
-#/ Script Name : run.sh
-#/
-#/ Desctiption :
-#/     1. Execute the shell specified by the argument.
-#/     2. Output shell's standard output and standard error output to the log.
-#/
-#/ Usage :
-#/     run.sh shell [params]
-#/     e.g.) run.sh foo.sh
-#/           run.sh bar.sh buz
-#/
+#
+# Script Name : run.sh
+#
+# Desctiption :
+#     1. Execute the bash script with specified arguments.
+#     2. Output script's standard output and standard error output to the logfile.
+#
+# Usage :
+#     run.sh shell [params]
+#     e.g.) run.sh foo.sh
+#           run.sh bar.sh buz
+#
 #//////////////////////////////////////////////////////////////////////
+
 # ------------------------------------------
 # Init Process
 # ------------------------------------------

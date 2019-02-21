@@ -1,19 +1,20 @@
 #!/bin/bash
 #/////////////////////////////////////////////////////////////////////
-#/
-#/ Script Name : housekeep.sh
-#/
-#/ Desctiption :
-#/     1.   create config for myself.
-#/     2-1. check config setting (for each iterations).
-#/     2-2. delete old files  (for each iterations).
-#/
-#/ Usage :
-#/     housekeep.sh param1
-#/         param 1 - list of housekeep target
-#/     e.g.) housekeep.sh /path/to/dir/my_housekeep.list
-#/
+#
+# Script Name : housekeep.sh
+#
+# Desctiption :
+#     1.   create config for myself.
+#     2-1. check config setting (for each iterations).
+#     2-2. delete old files  (for each iterations).
+#
+# Usage :
+#     housekeep.sh param1
+#         param 1 - list of housekeep target
+#     e.g.) housekeep.sh /path/to/dir/my_housekeep.list
+#
 #//////////////////////////////////////////////////////////////////////
+
 # ------------------------------------------
 # Init Process
 # ------------------------------------------
@@ -165,7 +166,7 @@ do
     fi
 
     ### check _RETNTION_DAYS
-    echo "${_RETNTION_DAYS}" | egrep -q "^[0-9][0-9]*$"
+    echo "${_RETNTION_DAYS}" | egrep -q "^[0-9]+$"
     if [ $? -ne 0 ];then
         _Message -e "RETNTION_DAYS:${_RETNTION_DAYS} is invalid."
         _Message -w "Continue to the next entry."
@@ -197,7 +198,7 @@ do
         ACTION_CMD="ls -ld"
         ;;
     * )
-        _Message -e "ACTION:${_ACTION} is not supported. \"delete\", \"compress\", or \"none\" is supported."
+        _Message -e "ACTION:${_ACTION} is not supported. \"delete\", \"compress\", or \"none\" are supported."
         _Message -w "Continue to the next entry."
         ERR_COUNT=$(( ERR_COUNT + 1 ))
         continue

@@ -1,21 +1,23 @@
 #!/bin/bash
 #//////////////////////////////////////////////////////////////////////
-#/
-#/ Script Name : setup.sh
-#/
-#/ Desctiption :
-#/     1. Create required directories.
-#/     2. Setting permissions.
-#/     3. Setting owner and group.
-#/
-#/ Usage :
-#/     setup.sh param1 [param2]
-#/	param 1 - owner name for tools
-#/	param 2 - group name for tools
-#/     e.g.) setup.sh hoge
-#/           setup.sh hoge fuga
-#/
+#
+# Script Name : setup.sh
+#
+# Desctiption :
+#     1. Create required directories.
+#     2. Setting permissions.
+#     3. Setting owner and group.
+#
+# Usage :
+#     setup.sh [param1] [param2]
+#	param 1 - owner name for tools
+#	param 2 - group name for tools
+#     e.g.) setup.sh
+#           setup.sh hoge
+#           setup.sh hoge fuga
+#
 #//////////////////////////////////////////////////////////////////////
+
 # ------------------------------------------
 # Init Process
 # ------------------------------------------

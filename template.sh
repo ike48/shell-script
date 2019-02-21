@@ -1,22 +1,23 @@
 #!/bin/bash
 #//////////////////////////////////////////////////////////////////////
-#/
-#/ Script Name : template.sh
-#/
-#/ Desctiption :
-#/     1. hoge
-#/     2. fuga
-#/     3. piyo
-#/
-#/ Usage :
-#/     template.sh param1 param2 [param3]
-#/         param 1 - foo
-#/         param 2 - bar
-#/         param 3 - buz
-#/     e.g.) template.sh foo bar buz
-#/           template.sh for bar
-#/
+#
+# Script Name : template.sh
+#
+# Desctiption :
+#     1. hoge
+#     2. fuga
+#     3. piyo
+#
+# Usage :
+#     template.sh param1 param2 [param3]
+#         param 1 - foo
+#         param 2 - bar
+#         param 3 - buz
+#     e.g.) template.sh foo bar buz
+#           template.sh for bar
+#
 #//////////////////////////////////////////////////////////////////////
+
 # ------------------------------------------
 # Init Process
 # ------------------------------------------
